@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yerevan Store | Price List</title>
+<style>
+:root {
+    --accent-pink: #ff00ff;
+    --accent-blue: #00e5ff;
+    --bg-dark: #080808;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+}
+
+/* Basic reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header & Logo */
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.main-logo {
+    width: 150px;
+    animation: pulseLogo 3s infinite ease-in-out;
+    cursor: pointer;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    animation: shimmer 5s linear infinite;
+}
+
+header p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-top: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseLogo {
+    0%,100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--accent-blue)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 20px var(--accent-pink)); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Category Headers */
+.category-header {
+    text-align: center;
+    margin: 60px 0 20px;
+}
+
+.category-header h2 {
+    font-size: 2rem;
+    color: var(--accent-blue);
+    text-shadow: 0 0 10px rgba(0,229,255,0.3);
+    margin-bottom: 10px;
+}
+
+.category-header::after {
+    content: "";
+    display: block;
+    width: 150px;
+    height: 2px;
+    margin: 0 auto;
+    background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
+    opacity: 0.5;
+}
+
+/* Grid & Cards */
+.container { max-width: 1100px; margin: auto; padding: 20px; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 1px solid var(--accent-pink);
+}
+
+/* Images */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.6s ease;
+}
+
+.card img.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Titles & Prices */
+.card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.price-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.current-price {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #ff4d4d;
+}
+
+/* Gift Tags */
+.gift-tag {
+    background: rgba(0,229,255,0.1);
+    border-radius: 15px;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--accent-blue);
+}
+
+/* Order Button */
+.order-btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.order-btn:hover {
+    background: var(--accent-pink);
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--accent-pink);
+}
+
+@media (max-width: 480px) {
+    header h1 { font-size: 2rem; }
+    .main-logo { width: 120px; }
+    .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="logo-wrapper">
+    <img src="photo_2026-01-21 23.56.45.jpeg" alt="Yerevan Store" class="main-logo">
+</div>
+
+<header>
+    <h1>ԳՆԱՑՈՒՑԱԿ</h1>
+    <p>Premium Tech Collection</p>
+</header>
+
+<div class="container" id="content"></div>
+
+<script>
+ const inventory = [
+        {
+            category: "⌚ Apple Watch AMOLED",
+            items: [
+                { name: "Apple Watch 11", price: "29.000", old: "35.000", gift: "🎁 2 գոտի + Adapter", images: ["https://prod-cdn.prod.asbis.io/s3size/el:t/rt:fill/w:512/plain/s3://cms/product/89/b9/89b91e9f99e19b9644e52b6f193709e2/250425160059071605.webp"] },
+                { name: "Apple Watch Ultra 3", price: "29.000", old: "39.000", gift: "🎁 2 գոտի + Adapter", images: ["https://prod-cdn.prod.asbis.io/s3size/el:t/rt:fill/w:512/plain/s3://cms/product/78/f4/78f43bd18c2715e9fd9a14bf94179486/250425160032319751.webp"] }
+            ]
+        },
+        {
+            category: "⌚ Apple Watch TFT",
+            items: [
+                { name: "Apple Watch 11 TFT", price: "15.000", gift: "🎁 Միլանյան գոտի + Adapter", images: ["https://prod-cdn.prod.asbis.io/s3size/el:t/rt:fill/w:512/plain/s3://cms/product/4f/13/4f1377f33659ba9a1d4bdb54600b9c46/250425160028127042.webp"] },
+                { name: "Apple Watch Ultra 3 TFT", price: "20.000", gift: "🎁 Միլանյան գոտի + Adapter", images: ["https://prod-cdn.prod.asbis.io/s3size/el:t/rt:fill/w:512/plain/s3://cms/product/98/90/9890f72f95b49b0081a0fa8703a87a4a/250915140013114513.webp"] }
+            ]
+        },
+        {
+            category: "🎧 AirPods Series",
+            items: [
+                { name: "AirPods Pro 2", price: "7.500", images: ["https://prod-cdn.prod.asbis.io/s3size/el:t/rt:fill/w:512/plain/s3://cms/product/db/e6/dbe648eed9ce6519af590326ba2bfd35/250408160013777696.webp"] },
+                { name: "AirPods Pro 2 ANC", price: "12.000", gift: "🎁 Adapter + պաշտպանիչ քեյս", images: ["https://prod-cdn.prod.asbis.io/s3size/el:t/rt:fill/w:512/plain/s3://cms/product/db/e6/dbe648eed9ce6519af590326ba2bfd35/250408160013777696.webp"] },
+                { name: "AirPods 4", price: "9.000", images: ["https://prod-cdn.prod.asbis.io/s3size/el:t/rt:fill/w:512/plain/s3://cms/product/c5/06/c5063b56e7634a6d343fa03328d12c61/250612160025667198.webp"] },
+                { name: "AirPods 4 ANC", price: "14.900", gift: "🎁 Adapter + պաշտպանիչ քեյս", images: ["https://prod-cdn.prod.asbis.io/s3size/el:t/rt:fill/w:512/plain/s3://cms/product/c5/06/c5063b56e7634a6d343fa03328d12c61/250612160025667198.webp"] },
+                { name: "AirPods Pro 3 (Airoha)", price: "18.000", gift: "🎁 20W Adapter + լիցքավորման լար", images: ["https://prod-cdn.prod.asbis.io/s3size/el:t/rt:fill/w:512/plain/s3://cms/product/db/e6/dbe648eed9ce6519af590326ba2bfd35/250408160013777696.webp"] }
+            ]
+        },
+        {
+            category: "💨 Dyson Series",
+            items: [
+                { name: "Dyson HS05 — Malaysia", price: "79.000", gift: "🎁 Սանր կամ պայուսակ", images: ["https://eldorado.am/media/catalog/product/cache/b636eac9f5e866652b5cbe8cee86d97c/d/y/dyson_airwrap_multi-styler_complete_nickel_copper.jpg"] },
+                { name: "Dyson HT01 + Case", price: "69.000", gift: "🎁 Dyson տոպրակ", images: ["https://eldorado.am/media/catalog/product/cache/b636eac9f5e866652b5cbe8cee86d97c/d/y/dyson_ht01_airstrait_prussian_blue.jpg"] },
+                { name: "Dyson HT01 — Malaysia", price: "54.900", gift: "🎁 Dyson տոպրակ", images: ["https://eldorado.am/media/catalog/product/cache/b636eac9f5e866652b5cbe8cee86d97c/d/y/dyson_ht01_airstrait_prussian_blue_3.jpg"] },
+                { name: "Dyson HS01 — Malaysia", price: "49.000", old: "65.000", images: ["https://eldorado.am/media/catalog/product/cache/b636eac9f5e866652b5cbe8cee86d97c/d/y/dyson_ht01_ceramic_pink.jpg"] }
+            ]
+        }
+    ];
+const contentDiv = document.getElementById('content');
+
+inventory.forEach(cat => {
+    let html = `<div class="category-header"><h2>${cat.category}</h2></div><div class="grid">`;
+    cat.items.forEach(item => {
+        const imgsHTML = item.images.map((img, index) => `<img src="${img}" class="${index===0?'active':''}" alt="${item.name}">`).join('');
+        html += `
+            <div class="card">
+                <div class="image-container">${imgsHTML}</div>
+                <h3>${item.name}</h3>
+                <div class="price-container">
+                    ${item.old ? `<span class="old-price">${item.old} ֏</span>` : ''}
+                    <span class="current-price">${item.price} ֏</span>
+                </div>
+                ${item.gift ? `<div class="gift-tag">${item.gift}</div>` : ''}
+                <button class="order-btn" onclick="sendOrder('${item.name}')">Պատվիրել</button>
+            </div>`;
+    });
+    html += `</div>`;
+    contentDiv.innerHTML += html;
+});
+
+setInterval(() => {
+    document.querySelectorAll('.image-container').forEach(container => {
+        const images = container.querySelectorAll('img');
+        if (images.length > 1) {
+            let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+            images[activeIndex].classList.remove('active');
+            activeIndex = (activeIndex + 1) % images.length;
+            images[activeIndex].classList.add('active');
+        }
+    });
+}, 3000);
+
+function sendOrder(name) {
+    const phone = "37494706307";
+    const text = encodeURIComponent(`Բարև ձեզ, ուզում եմ պատվիրել՝ ${name}`);
+    window.location.href = `https://t.me/+${phone}?text=${text}`;
+}
+</script>
+</body>
+</html>
